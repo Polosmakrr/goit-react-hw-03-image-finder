@@ -8,7 +8,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const URL = "https://pixabay.com/api/";
-const API_KEY = "24465879-ee592e630361e28095acfb740";
+const API_KEY = "24080783-03e8685994000525a28035f2f";
 
 export class App extends Component {
   state = {
