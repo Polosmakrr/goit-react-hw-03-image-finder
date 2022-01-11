@@ -4,11 +4,10 @@ import ImageGallery from "../ImageGallery/ImageGallery";
 import Button from "../Button/Button";
 import Modal from "../Modal/Modal";
 import Loader from "react-loader-spinner";
+import fetchPick from "../Fetch/Fetch";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const URL = "https://pixabay.com/api/";
-const API_KEY = "24080783-03e8685994000525a28035f2f";
 
 export class App extends Component {
   state = {
@@ -26,7 +25,8 @@ export class App extends Component {
       prevState.page !== this.state.page
     ) {
       this.setState({ loading: true });
-      this.fetchPick()
+     
+      fetchPick(this.state.queryName,this.state.page)
         .then((newArray) => {
           if (newArray.total === 0) {
             toast.warn(`Ничего не найдено`);
@@ -47,16 +47,6 @@ export class App extends Component {
   getLargeImageForModal = (data) => {
     this.toggleModal();
     this.setState({ largeImg: data });
-  };
-
-  fetchPick = async () => {
-    const res = await fetch(
-      `${URL}?q=${this.state.queryName}&key=${API_KEY}&image_type=photo&orientation=horizontal&page=${this.state.page}&per_page=12`
-    );
-    if (res.status === 404) {
-      return Promise.reject("Oops, something went wrong");
-    }
-    return await res.json();
   };
 
   toggleModal = () => {
