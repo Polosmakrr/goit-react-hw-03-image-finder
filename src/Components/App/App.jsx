@@ -4,7 +4,7 @@ import ImageGallery from "../ImageGallery/ImageGallery";
 import Button from "../Button/Button";
 import Modal from "../Modal/Modal";
 import Loader from "react-loader-spinner";
-import fetchPick from "../Fetch/Fetch";
+import fetchPick from "../Fetch/fetch";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
